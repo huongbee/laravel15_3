@@ -1,0 +1,1 @@
+<p style="color: red">{{'đây là footer'}}</p>
