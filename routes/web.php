@@ -113,4 +113,10 @@ Route::get('chitietsanpham','PageController@getChitiet');
 
 Route::get('tao_bang_bang_san_pham','PageController@getTaobang');
 
+Route::get('sua_bang_bang_san_pham','PageController@getEditTable');
 
+Route::get('rename_bang_bang_san_pham','PageController@getRenameTable');
+
+Route::get('xoa_bang_slide','PageController@getDropTable');
+
+Route::get('them_data_product','PageController@insertData');

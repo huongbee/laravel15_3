@@ -11,6 +11,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(loaisanphamSeeder::class);
+
+        
+    	/*DB::table('product')->insert([
+
+    		'TenSanPham'=>'Sản phẩm 1',
+    		'gia'=>'200000',
+    		'mota'=>'asd fgh jkl  654 33qr fgfb dfd'
+    	]);
+
+    	DB::table('loaisanpham')->insert([
+    		
+    		'TenSanPham'=>'Sản phẩm 1',
+    		'gia'=>'200000',
+    		'mota'=>'asd fgh jkl  654 33qr fgfb dfd'
+    	]);*/
     }
 }

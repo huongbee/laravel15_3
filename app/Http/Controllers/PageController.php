@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Schema;
+use DB;
 
 
 class PageController extends Controller
@@ -91,6 +92,35 @@ class PageController extends Controller
             $table->timestamps(); //Tự cập nhật thời gian
         }); 
         echo 'thành công';
+    }
+
+    public function getEditTable(){
+        Schema::table('sanpham', function($t){
+            $t->dropColumn('Gia'); //xóa cột
+        });
+        echo 'thành công';
+    }
+
+    public function getRenameTable(){
+        Schema::rename('sanpham','product');
+        echo 'success';
+    }
+
+    public function getDropTable(){
+        //Schema::drop('slide'); xóa bảng slide
+
+        Schema::dropIfExists('hinhsp'); //xóa bảng slide nếu tồn tại
+        echo 'success';
+    }
+
+
+    public function insertData(){
+        DB::table('product')->insert([
+            
+            'TenSanPham'=>'Sản phẩm 2',
+            'gia'=>'200000',
+            'mota'=>'asd fgh jkl  654 33qr fgfb dfd'
+        ]);
     }
 
 }
