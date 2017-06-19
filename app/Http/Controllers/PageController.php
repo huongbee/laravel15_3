@@ -123,4 +123,72 @@ class PageController extends Controller
         ]);
     }
 
+
+    public function getProduct(){
+        //$product = DB::table('products')->get(); // SELECT * FROM products
+        //$product = DB::table('products')->where('id_type',5)->get(); 
+                    // SELECT * FROM products WHERE id_type=5
+        //$product = DB::table('products')->select('name as TenSanPham', 'unit_price as Gia')->orderBy('unit_price','DESC')->get();
+                    //select name as TenSanPham, unit_price as Gia from products order by unit_price DESC
+       // $product = DB::table('products')
+                        //->select(DB::raw('max(unit_price) as giacaonhat'))
+                        //->groupBy('id_type')
+                        //->where('id_type',5)
+                       // ->first(); 
+                        //select count(id) as soluong
+                        //from products
+                        //where id_type = 5
+                        //group by id
+
+                        //SELECT max(unit_price) as giacaonhat FROM products
+
+        //get() : trả về array data gồm nhiều object
+
+
+        //first(): trả về object
+
+
+        /*$product = DB::table('products')
+                    ->join('type_products','type_products.id','=','products.id_type')
+                    ->select('products.*','type_products.name as nameType')
+                    ->where('type_products.id',1)
+                    ->orWhere('type_products.id',2)
+                    //->limit(10)
+                    ->skip(0)->take(10)//vitri, soluong //=limit(10)
+                    ->get();*/
+         /*
+        SELECT p.*, t.name FROM `products`  p 
+        INNER JOIN type_products t ON t.id = p.id_type
+        */
+        $product = DB::table('products')
+                    ->where('id_type',2)
+                    ->avg('unit_price');
+        // SELECT avg(unit_price) from products WhERE id_type=2
+        dd($product);
+    }
+
+
+    public function getUpdateCustomer(){
+        DB::table('customer')
+                ->where('id',5)
+                ->update(['email'=>'khoaphamtraining@gmail.com']);
+        echo 'Thành công';
+    }
+
+
+    public function getInsertUser(){
+        DB::table('users')
+                ->insert([
+                   'full_name'=>'Hương 2',
+                   'email'=>'huong2@gmail.com' ,
+                   'password'=>'1234567'
+                ]);
+        echo 'thành công';
+    }
+
+    public function getDeleteUser(){
+        DB::table('users')->truncate();
+        echo ' xóa thành công';
+    }
+
 }

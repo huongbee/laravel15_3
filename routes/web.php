@@ -120,3 +120,26 @@ Route::get('rename_bang_bang_san_pham','PageController@getRenameTable');
 Route::get('xoa_bang_slide','PageController@getDropTable');
 
 Route::get('them_data_product','PageController@insertData');
+
+
+
+Route::get('get-product',[
+	'as'=>'get_product', //tên route
+	'uses'=>'PageController@getProduct' //gọi controller
+]);
+
+
+Route::get('update-customer',[
+	'as'=>'update_customer', //tên route
+	'uses'=>'PageController@getUpdateCustomer' //gọi controller
+]);
+
+Route::get('insert-user',[
+	'as'=>'insert', //tên route
+	'uses'=>'PageController@getInsertUser' //gọi controller
+]);
+
+Route::get('delete-user',[
+	'as'=>'delete', //tên route
+	'uses'=>'PageController@getDeleteUser' //gọi controller
+]);
