@@ -143,3 +143,31 @@ Route::get('delete-user',[
 	'as'=>'delete', //tên route
 	'uses'=>'PageController@getDeleteUser' //gọi controller
 ]);
+
+
+
+Route::group(['prefix'=>'eloquent'],function(){
+	Route::get('get-san-pham',[
+		'as'=>'ds_sp',
+		'uses'=>'HomeController@getIndex'
+	]);
+	Route::get('get-khach-hang',[
+		'as'=>'ds_kh',
+		'uses'=>'HomeController@getCustomer'
+	]);
+
+
+
+	Route::get('add-san-pham',[
+		'as'=>'add_sp',
+		'uses'=>'HomeController@getAddProduct'
+	]);
+
+
+	Route::get('edit-san-pham/{id}',[
+		'as'=>'edit_sp',
+		'uses'=>'HomeController@getEditProduct'
+	]);
+
+
+});
