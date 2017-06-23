@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\TypeProduct;
 use App\Customer;
+use App\Bills;
+use App\BillDetail;
 use DB;
 
 class HomeController extends Controller
@@ -50,4 +53,53 @@ class HomeController extends Controller
     	$products->save();
     	echo 'Thành công';
     }
+
+    public function getDeleteProduct($id){
+        $product = Product::where('id',$id)->first();
+        $product->delete();
+        echo 'Xóa thành công';
+
+    }
+
+    public function getBill($id){
+        $bills = Bills::with('Customer')->where('id',$id)->first();
+        echo 'Mã hóa đơn là: '.$bills->id;
+        echo '. Khách hàng: '.$bills->Customer->name;
+        ///dd($bills);
+    }
+
+
+    public function getBillOfCustomer($id){
+        $customer = Customer::with('Bills')->where('id',$id)->first();
+        //dd($customer);
+        echo 'Khách hàng: '.$customer->name;
+        $tong = 0;
+        foreach($customer->Bills as $bill){
+            $tong += $bill->total; //tong = tong + giá trị mới (total)
+        }
+        echo '. Tổng tiền: '.$tong;
+    }
+
+    public function getProductByType($id){
+        $p = TypeProduct::with('Product')->where('id',$id)->first();
+        dd($p);
+    }
+
+    public function getProductByBill($id_bill){
+        $p = Bills::with('Product')->where('id',$id_bill)->first();
+        dd($p);
+    }
+
+    public function getBillByProduct($id_product){
+        $p = Product::with('Bill')->where('id',$id_product)->first();
+        dd($p);
+    }
+
+
+    public function getBillDetailByCustomer($id_cus){
+        $p = Customer::with('BillDetail')->where('id',$id_cus)->first();
+        dd($p);
+    }
+
+
 }

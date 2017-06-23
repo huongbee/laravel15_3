@@ -169,5 +169,41 @@ Route::group(['prefix'=>'eloquent'],function(){
 		'uses'=>'HomeController@getEditProduct'
 	]);
 
+	Route::get('delete-san-pham/{id}',[
+		'as'=>'delete_sp',
+		'uses'=>'HomeController@getDeleteProduct'
+	]);
+
+	Route::get('get-bill/{id}',[
+		'as'=>'get_bill',
+		'uses'=>'HomeController@getBill'
+	]);
+
+	Route::get('get-bill-of-customer/{id}',[
+		'as'=>'get_bill_customer',
+		'uses'=>'HomeController@getBillOfCustomer'
+	]);
+
+	Route::get('get-product-by-idtype/{id}',[
+		'as'=>'get_product_by_type',
+		'uses'=>'HomeController@getProductByType'
+	]);
+
+	Route::get('get-product-by-idbill/{id}',[
+		'as'=>'get_product_by_bill',
+		'uses'=>'HomeController@getProductByBill'
+	]);
+
+
+	Route::get('get-bill-by-idproduct/{id}',[
+		'as'=>'get_bill_by_product',
+		'uses'=>'HomeController@getBillByProduct'
+	]);
+
+
+	Route::get('get-billdetail-by-idcustomer/{id}',[
+		'as'=>'get_billdetail_by_customer',
+		'uses'=>'HomeController@getBillDetailByCustomer'
+	]);
 
 });
