@@ -67,11 +67,6 @@ Route::get('login/{user}',[
 Route::get('geturi','PageController@getData');
 
 
-Route::get('login','PageController@getViewLogin');
-Route::post('login',[
-	'as'=>'login',
-	'uses'=>'PageController@postViewLogin'
-]);
 
 
 
@@ -206,4 +201,26 @@ Route::group(['prefix'=>'eloquent'],function(){
 		'uses'=>'HomeController@getBillDetailByCustomer'
 	]);
 
+});
+
+
+
+
+
+
+Route::get('login',[
+	'as'=>'login',
+	'uses'=>'PageController@getViewLogin'
+]);
+
+Route::post('login',[
+	'as'=>'login',
+	'uses'=>'PageController@postViewLogin'
+]);
+Route::group(['middleware'=>'checkLogin'],function(){
+	Route::get('admin',[
+		
+		'as'=>'quantri',
+		'uses'=>'PageController@getAdmin'
+	]);
 });

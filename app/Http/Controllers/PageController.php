@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Schema;
 use DB;
+use Auth;
 
 
 class PageController extends Controller
@@ -38,13 +39,22 @@ class PageController extends Controller
     	return view('form_data');
     }
 
-    public function postViewLogin(Request $req){
-    	$form = $req->all();//->toJson();
-    	print_r(($form));
-    	/*echo $user = $req->input('username.1'); // username:lấy từ form ở view form_data
-    	echo "<br>";
-    	echo $pass = $req->password; //password: lấy từ form ở view form_data*/
+    public function postViewLogin(Request $request){
+        //dd(Auth::user());
+        if($request->username == 'admin' && $request->password == '123456')
+        
+            return redirect()->route('quantri');
+        else{
+            return 0;
+        }
+    	
     }
+
+    public function getAdmin(){
+        return view('quantriadmin');
+    }
+
+
 
 
     public function setCookie(){

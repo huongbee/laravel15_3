@@ -12,10 +12,9 @@
 		{{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
 		{{csrf_field()}}
 
-		Username: <input type="text" name="username[]" placeholder="Nhập username">
+		Username: <input type="text" name="username" placeholder="Nhập username">
 		<br><br>
-		Username2: <input type="text" name="username[]" placeholder="Nhập username2">
-		<br><br>
+		
 		Mật khẩu: <input type="password" name="password" placeholder="Nhập Mật khẩu">
 		<br><br>
 		<button type="submit" name="gui">Login</button>
