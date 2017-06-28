@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="">
 
 <body>
-	<form method="POST" action="{{route('login')}}">
+	<form method="POST" action="{{route('quantri')}}">
 
 		{{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
 		{{csrf_field()}}

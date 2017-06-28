@@ -39,19 +39,12 @@ class PageController extends Controller
     	return view('form_data');
     }
 
-    public function postViewLogin(Request $request){
-        //dd(Auth::user());
-        if($request->username == 'admin' && $request->password == '123456')
-        
-            return redirect()->route('quantri');
-        else{
-            return 0;
-        }
-    	
-    }
-
     public function getAdmin(){
         return view('quantriadmin');
+    }
+
+    public function getEditInfo(){
+        echo 12345;
     }
 
 

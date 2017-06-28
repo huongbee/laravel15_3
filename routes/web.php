@@ -213,14 +213,14 @@ Route::get('login',[
 	'uses'=>'PageController@getViewLogin'
 ]);
 
-Route::post('login',[
-	'as'=>'login',
-	'uses'=>'PageController@postViewLogin'
-]);
 Route::group(['middleware'=>'checkLogin'],function(){
-	Route::get('admin',[
-		
+	Route::post('admin',[
 		'as'=>'quantri',
 		'uses'=>'PageController@getAdmin'
+	]);
+
+	Route::get('edit-info',[
+		'as'=>'edit-info',
+		'uses'=>'PageController@getEditInfo'
 	]);
 });

@@ -19,7 +19,7 @@ class CheckLogin
         // if(Auth::check()){
         //     return redirect()->route('quantri');
         // }
-        dd($request->username);
+        //dd($request->username);
         if($request->username == 'admin' && $request->password == '123456'){
             //echo 1234;die;
             return $next($request);
