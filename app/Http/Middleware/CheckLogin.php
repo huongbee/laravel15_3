@@ -16,15 +16,16 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
-        // if(Auth::check()){
-        //     return redirect()->route('quantri');
-        // }
-        //dd($request->username);
-        if($request->username == 'admin' && $request->password == '123456'){
-            //echo 1234;die;
+        if(Auth::check()){
+            //return redirect()->route('quantri');
             return $next($request);
         }
+        
+        // if($request->username == 'admin' && $request->password == '123456'){
+        //     //echo 1234;die;
+        //     return $next($request);
+        // }
         else
-            return redirect()->back();
+            return redirect()->route('login');
     }
 }

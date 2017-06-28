@@ -39,12 +39,30 @@ class PageController extends Controller
     	return view('form_data');
     }
 
-    public function getAdmin(){
-        return view('quantriadmin');
+    public function getAdmin(Request $req){
+        $user = Auth::attempt(array(
+                                'email'=>$req->username,
+                                'password'=>$req->password
+                            ));
+
+        if($user){
+            $user = Auth::user()->full_name;
+            //dd($user);
+            return view('quantriadmin',compact('user'))
+                    ->with(['thanhcong'=>'Đăng nhập thành công']);
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function getEditInfo(){
         echo 12345;
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        echo 'Đã logout';
     }
 
 
